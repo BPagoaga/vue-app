@@ -1,7 +1,7 @@
 <template>
 <form action="">
 	<div class="form-group">		
-		<brand-selector name="brand-selector" message="Choisissez votre marque" :data="selectPosts"></brand-selector>
+		<brand-selector v-on:select="test" name="brand-selector" message="Choisissez votre marque" :data="selectPosts"></brand-selector>
 		<model-selector name="model-selector" message="Choisissez votre modèle" :data="selectPosts"></model-selector>
 		<motor-selector name="motor-selector" message="Choisissez votre motorisation" :data="selectPosts"></motor-selector>
 	</div>
@@ -16,8 +16,18 @@
 		props: {
 			selectPosts: { type: Array }
 		},
+		data() {
+			return {}
+		},
 		components: {
-			selector: Selector
+			'brand-selector': BrandSelector,
+			'model-selector': ModelSelector,
+			'motor-selector': MotorSelector
+		},
+		methods: {
+			test() {
+				console.log('test')
+			}
 		}
 	}
 </script>
